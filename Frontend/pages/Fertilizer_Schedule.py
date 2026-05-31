@@ -4,7 +4,7 @@ import json
 from datetime import date, timedelta
 import streamlit as st
 import streamlit.components.v1
-import pandas as pdS
+import pandas as pd
 
 from shared import COLORS, login_guard, render_shell, render_footer
 from api_client import predict_fertilizer, get_fertilizer_schedule
