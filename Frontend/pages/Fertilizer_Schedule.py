@@ -5,6 +5,8 @@ from datetime import date, timedelta
 import streamlit as st
 import streamlit.components.v1
 import pandas as pd
+import plotly.io as pio
+pio.templates.default = "plotly_white"
 
 from shared import COLORS, login_guard, render_shell, render_footer
 from api_client import predict_fertilizer, get_fertilizer_schedule
@@ -612,12 +614,12 @@ if go:
                         font=dict(family="Playfair Display, serif", size=17, color="#1F3D2A"),
                         x=0.01,
                     ),
-                    xaxis=dict(title="Application Date", tickfont=dict(family="Source Sans 3, sans-serif", size=12), showgrid=False),
-                    yaxis=dict(title="Nitrogen (kg / ha)", tickfont=dict(family="Source Sans 3, sans-serif", size=12),
+                    xaxis=dict(title="Application Date", tickfont=dict(family="Source Sans 3, sans-serif", size=12, color="#1a1a1a"), title_font=dict(color="#1a1a1a"), showgrid=False),
+                    yaxis=dict(title="Nitrogen (kg / ha)", tickfont=dict(family="Source Sans 3, sans-serif", size=12, color="#1a1a1a"), title_font=dict(color="#1a1a1a"),
                                gridcolor="#EEE", range=[0, n_per_app_val * 1.55]),
                     plot_bgcolor="#FAFAF8",
                     paper_bgcolor="#FFFFFF",
-                    font=dict(family="Source Sans 3, sans-serif", size=13),
+                    font=dict(family="Source Sans 3, sans-serif", size=13, color="#1a1a1a"),
                     showlegend=False,
                     height=420,
                     margin=dict(t=130, b=40, l=75, r=30),
@@ -914,19 +916,22 @@ else:
                     ),
                     xaxis=dict(
                         title="Field",
-                        tickfont=dict(family="Source Sans 3, sans-serif", size=10),
+                        tickfont=dict(family="Source Sans 3, sans-serif", size=10, color="#1a1a1a"),
+                        title_font=dict(color="#1a1a1a"),
                         tickangle=-50,
                         showgrid=False,
                     ),
                     yaxis=dict(
                         title="Annual Nitrogen (kg N/ha)",
-                        tickfont=dict(family="Source Sans 3, sans-serif", size=12),
+                        tickfont=dict(family="Source Sans 3, sans-serif", size=12, color="#1a1a1a"),
+                        title_font=dict(color="#1a1a1a"),
                         gridcolor="#EEE",
                         side="left",
                     ),
                     yaxis2=dict(
                         title="Applications / Year",
-                        tickfont=dict(family="Source Sans 3, sans-serif", size=12),
+                        tickfont=dict(family="Source Sans 3, sans-serif", size=12, color="#1a1a1a"),
+                        title_font=dict(color="#1a1a1a"),
                         overlaying="y",
                         side="right",
                         showgrid=False,
@@ -935,12 +940,12 @@ else:
                     ),
                     plot_bgcolor="#FAFAF8",
                     paper_bgcolor="#FFFFFF",
-                    font=dict(family="Source Sans 3, sans-serif", size=12),
+                    font=dict(family="Source Sans 3, sans-serif", size=12, color="#1a1a1a"),
                     legend=dict(
                         orientation="h",
                         yanchor="bottom", y=1.02,
                         xanchor="left", x=0,
-                        font=dict(size=11),
+                        font=dict(size=11, color="#1a1a1a"),
                         itemsizing="constant",
                         itemwidth=40,
                         tracegroupgap=8,

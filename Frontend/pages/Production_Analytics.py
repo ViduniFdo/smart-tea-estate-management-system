@@ -8,6 +8,8 @@ from datetime import date
 from pathlib import Path
 from shared import COLORS, login_guard, render_shell, render_footer
 from api_client import predict_productivity
+import plotly.io as pio
+pio.templates.default = "plotly_white"
 
 st.set_page_config(
     page_title="Production Analytics – STEMS",
@@ -506,11 +508,11 @@ if prediction_done and x_clean:
 
 fig_yield.update_layout(
     plot_bgcolor=C["white"], paper_bgcolor=C["bg"],
-    font=dict(family="Source Sans 3", color=C["text_dark"]),
+    font=dict(family="Source Sans 3", color="#1a1a1a"),
     margin=dict(l=20, r=20, t=20, b=60), height=370,
-    xaxis=dict(gridcolor="#E8E4DE", tickangle=-40, tickfont=dict(size=11)),
-    yaxis=dict(gridcolor="#E8E4DE", title="Yield (kg)", tickformat=","),
-    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+    xaxis=dict(gridcolor="#E8E4DE", tickangle=-40, tickfont=dict(size=11, color="#1a1a1a"), title_font=dict(color="#1a1a1a")),
+    yaxis=dict(gridcolor="#E8E4DE", title="Yield (kg)", tickformat=",", tickfont=dict(color="#1a1a1a"), title_font=dict(color="#1a1a1a")),
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0, font=dict(color="#1a1a1a")),
     hovermode="x unified",
 )
 st.plotly_chart(fig_yield, width='stretch', key="chart_yield_unified")
@@ -584,12 +586,13 @@ if prediction_done:
 
     fig_bar.update_layout(
         plot_bgcolor=C["white"], paper_bgcolor=C["bg"],
-        font=dict(family="Source Sans 3", color=C["text_dark"]),
+        font=dict(family="Source Sans 3", color="#1a1a1a"),
         margin=dict(l=20, r=20, t=30, b=40), height=360,
-        xaxis=dict(gridcolor="#E8E4DE", title="Year"),
+        xaxis=dict(gridcolor="#E8E4DE", title="Year", tickfont=dict(color="#1a1a1a"), title_font=dict(color="#1a1a1a")),
         yaxis=dict(
             gridcolor="#E8E4DE", title="Yield (kg)",
-            tickformat=",", range=[0, y_max]
+            tickformat=",", range=[0, y_max],
+            tickfont=dict(color="#1a1a1a"), title_font=dict(color="#1a1a1a"),
         ),
         showlegend=False,
     )

@@ -6,6 +6,8 @@ import streamlit.components.v1
 import plotly.graph_objects as go
 from shared import COLORS, login_guard, render_shell, render_footer
 from api_client import predict_soil
+import plotly.io as pio
+pio.templates.default = "plotly_white"
 
 st.set_page_config(
     page_title="Soil Quality – STEMS",
@@ -395,18 +397,20 @@ body {{ font-family:'Source Sans 3',sans-serif; background:transparent; }}
 
                 fig_ph.update_layout(
                     plot_bgcolor="#FFFFFF", paper_bgcolor=C["bg"],
-                    font=dict(family="Source Sans 3", color=C["text_dark"], size=13),
+                    font=dict(family="Source Sans 3", color="#1a1a1a", size=13),
                     margin=dict(l=20, r=20, t=20, b=20), height=400,
                     showlegend=False,
                     hovermode="x unified",
                     xaxis=dict(
                         gridcolor="#EAE6E0", tickvals=years,
-                        tickfont=dict(size=12), title="Year",
+                        tickfont=dict(size=12, color="#1a1a1a"), title="Year",
+                        title_font=dict(color="#1a1a1a"),
                         showline=True, linecolor="#D9D4CC",
                     ),
                     yaxis=dict(
                         gridcolor="#EAE6E0", range=[3.0, 7.5],
-                        tickfont=dict(size=12), title="pH value",
+                        tickfont=dict(size=12, color="#1a1a1a"), title="pH value",
+                        title_font=dict(color="#1a1a1a"),
                         showline=True, linecolor="#D9D4CC",
                     ),
                 )
@@ -462,18 +466,20 @@ body {{ font-family:'Source Sans 3',sans-serif; background:transparent; }}
 
                 fig_c.update_layout(
                     plot_bgcolor="#FFFFFF", paper_bgcolor=C["bg"],
-                    font=dict(family="Source Sans 3", color=C["text_dark"], size=13),
+                    font=dict(family="Source Sans 3", color="#1a1a1a", size=13),
                     margin=dict(l=20, r=20, t=20, b=20), height=400,
                     showlegend=False,
                     hovermode="x unified",
                     xaxis=dict(
                         gridcolor="#EAE6E0", tickvals=years,
-                        tickfont=dict(size=12), title="Year",
+                        tickfont=dict(size=12, color="#1a1a1a"), title="Year",
+                        title_font=dict(color="#1a1a1a"),
                         showline=True, linecolor="#D9D4CC",
                     ),
                     yaxis=dict(
                         gridcolor="#EAE6E0", range=[0.0, 4.5],
-                        tickfont=dict(size=12), title="Carbon %",
+                        tickfont=dict(size=12, color="#1a1a1a"), title="Carbon %",
+                        title_font=dict(color="#1a1a1a"),
                         showline=True, linecolor="#D9D4CC",
                     ),
                 )
