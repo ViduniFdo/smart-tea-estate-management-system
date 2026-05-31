@@ -6,8 +6,8 @@ import streamlit as st
 import streamlit.components.v1
 import pandas as pd
 
-from Frontend.shared import COLORS, login_guard, render_shell, render_footer
-from Frontend.api_client import predict_fertilizer, get_fertilizer_schedule
+from shared import COLORS, login_guard, render_shell, render_footer
+from api_client import predict_fertilizer, get_fertilizer_schedule
 
 st.set_page_config(
     page_title="Fertilizer Schedule – STEMS",
@@ -306,7 +306,7 @@ st.markdown("<div style='height: 24px;'></div>", unsafe_allow_html=True)
 
 col_l, col_btn, col_r = st.columns([1.0, 0.8, 1.0])
 with col_btn:
-    go = st.button("View Prediction ↓", type="primary", use_container_width=True, key="fert_go_btn")
+    go = st.button("View Prediction ↓", type="primary", width='stretch', key="fert_go_btn")
 
 st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
 
@@ -623,7 +623,7 @@ if go:
                     margin=dict(t=130, b=40, l=75, r=30),
                     bargap=0.35,
                 )
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width='stretch')
 
             except ImportError:
                 try:
@@ -639,7 +639,7 @@ if go:
                             "Urea — Field Total (kg)": urea_per_app_val,
                         })
                     st.markdown("**Predicted N Applications This Year**")
-                    st.dataframe(pd.DataFrame(rows_tbl), hide_index=True, use_container_width=True)
+                    st.dataframe(pd.DataFrame(rows_tbl), hide_index=True, width='stretch')
                 except Exception:
                     pass
             except Exception:
@@ -951,7 +951,7 @@ else:
                     margin=dict(t=100, b=130, l=75, r=75),
                 )
 
-                st.plotly_chart(fig_estate, use_container_width=True)
+                st.plotly_chart(fig_estate, width='stretch')
 
             except ImportError:
                 pass
@@ -1025,10 +1025,10 @@ else:
 
             style_obj = (
                 table_df.style
-                .applymap(style_status, subset=["Status"])
-                .applymap(style_days, subset=["Days Until Next"])
-                .applymap(style_ratio, subset=["N Ratio"])
-                .applymap(style_n_status, subset=["N Status"])
+                .map(style_status, subset=["Status"])
+                .map(style_days, subset=["Days Until Next"])
+                .map(style_ratio, subset=["N Ratio"])
+                .map(style_n_status, subset=["N Status"])
                 .format(styled_cols)
                 .set_properties(**{
                     "font-family": "Source Sans 3, sans-serif",
@@ -1036,7 +1036,7 @@ else:
                 })
             )
 
-            st.dataframe(style_obj, use_container_width=True, hide_index=True, height=460)
+            st.dataframe(style_obj, width='stretch', hide_index=True, height=460)
             st.markdown("<div style='height: 48px;'></div>", unsafe_allow_html=True)
 
             n_annual_vp_min = ANNUAL_FERT_MIN_KG_HA * UREA_N_FRACTION

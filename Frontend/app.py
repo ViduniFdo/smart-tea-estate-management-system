@@ -41,7 +41,6 @@ FEATURES = [
     ),
 ]
 
-
 def _auth_css(C):
     bg = f"linear-gradient(135deg,{C['tea_dark']} 0%,{C['tea_green']} 100%)"
     return f"""
@@ -68,9 +67,15 @@ section[data-testid="stMain"] .stVerticalBlock{{gap:0!important;}}
 }}
 [data-testid="stHorizontalBlock"] > [data-testid="stColumn"]:nth-child(2) > div:first-child{{
     background:white!important;border-radius:22px!important;
-    padding:36px 32px 30px!important;box-shadow:0 20px 60px rgba(0,0,0,0.18)!important;width:100%!important;
+    padding:36px 32px 30px!important;box-shadow:0 20px 60px rgba(0,0,0,0.18)!important;
+    width:100%!important;color:#1a1a1a!important;
 }}
-.stTextInput > div > div > input{{background-color:#fafafa!important;border-radius:8px!important;}}
+.stTextInput label, .stTextInput p{{color:#1a1a1a!important;}}
+.stTextInput > div > div > input{{
+    background-color:#fafafa!important;border-radius:8px!important;
+    color:#1a1a1a!important;border:1px solid #ddd!important;
+}}
+.stTextInput > div > div > input::placeholder{{color:#aaa!important;}}
 div[data-testid="stButton"]:has(button[kind="primary"]){{margin-top:18px!important;display:block!important;}}
 button[kind="primary"],.stButton > button[kind="primary"]{{
     background-color:{C['tea_green']}!important;border-color:{C['tea_green']}!important;
@@ -80,8 +85,15 @@ button[kind="primary"],.stButton > button[kind="primary"]{{
 button[kind="primary"]:hover,.stButton > button[kind="primary"]:hover{{
     background-color:{C['tea_dark']}!important;border-color:{C['tea_dark']}!important;
 }}
+.stButton > button:not([kind="primary"]){{
+    background-color:#f0f0f0!important;border:1px solid #ddd!important;
+    color:#1a1a1a!important;border-radius:10px!important;
+    font-family:'Source Sans 3',sans-serif!important;
+}}
+.stButton > button:not([kind="primary"]):hover{{
+    background-color:#e0e0e0!important;border-color:#ccc!important;color:#1a1a1a!important;
+}}
 </style>"""
-
 
 def _auth_logo(C):
     logo = f"linear-gradient(135deg,{C['tea_green']},{C['tea_dark']})"
@@ -117,7 +129,7 @@ def page_login():
         username = st.text_input("Username", key="login_user", placeholder="Enter your username")
         password = st.text_input("Password", type="password", key="login_pass", placeholder="Enter your password")
 
-        if st.button("Log In", use_container_width=True, type="primary", key="login_btn"):
+        if st.button("Log In", width='stretch', type="primary", key="login_btn"):
             hashed = hashlib.sha256(password.encode()).hexdigest()
             users = _load_users()
             if username in users and users[username] == hashed:
@@ -157,7 +169,7 @@ def page_signup():
         password    = st.text_input("Password",        key="su_pass",    type="password", placeholder="Minimum 8 characters")
         confirm_pass = st.text_input("Confirm Password", key="su_confirm", type="password", placeholder="Re-enter your password")
 
-        if st.button("Create Account", use_container_width=True, type="primary", key="signup_btn"):
+        if st.button("Create Account", width='stretch', type="primary", key="signup_btn"):
             errors = []
             if not full_name.strip():
                 errors.append("Full Name is required.")
@@ -276,7 +288,7 @@ def page_dashboard():
               display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">{desc}</div>
 </div>
 """, unsafe_allow_html=True)
-            if st.button("View Details", key=btn_key, use_container_width=True):
+            if st.button("View Details", key=btn_key, width='stretch'):
                 st.switch_page(page_file)
 
     col1, col2 = st.columns(2, gap="large")

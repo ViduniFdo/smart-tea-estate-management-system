@@ -437,7 +437,7 @@ hr.divider {{ border: none; border-top: 1px solid #E0DBD3; margin: 20px 0; }}
                     unsafe_allow_html=True
                 )
 
-        if st.button("Logout", key="logout_btn", use_container_width=True):
+        if st.button("Logout", key="logout_btn", width='stretch'):
             st.session_state.logged_in = False
             st.session_state.user = None
             st.switch_page("app.py")

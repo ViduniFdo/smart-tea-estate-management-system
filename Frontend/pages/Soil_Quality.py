@@ -4,8 +4,8 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import streamlit as st
 import streamlit.components.v1
 import plotly.graph_objects as go
-from Frontend.shared import COLORS, login_guard, render_shell, render_footer
-from Frontend.api_client import predict_soil
+from shared import COLORS, login_guard, render_shell, render_footer
+from api_client import predict_soil
 
 st.set_page_config(
     page_title="Soil Quality – STEMS",
@@ -121,7 +121,7 @@ st.markdown("<div style='height: 28px;'></div>", unsafe_allow_html=True)
 col_l, col_btn, col_r = st.columns([1.0, 0.8, 1.0])
 with col_btn:
     btn_clicked = st.button("View Prediction", type="primary",
-                            use_container_width=True, key="soil_go_btn")
+                            width='stretch', key="soil_go_btn")
 
 st.markdown("<div style='height: 32px;'></div>", unsafe_allow_html=True)
 
@@ -410,7 +410,7 @@ body {{ font-family:'Source Sans 3',sans-serif; background:transparent; }}
                         showline=True, linecolor="#D9D4CC",
                     ),
                 )
-                st.plotly_chart(fig_ph, use_container_width=True)
+                st.plotly_chart(fig_ph, width='stretch')
 
                 # Carbon chart — extra top spacing before this section
                 st.markdown("<div style='height:48px;'></div>", unsafe_allow_html=True)
@@ -477,7 +477,7 @@ body {{ font-family:'Source Sans 3',sans-serif; background:transparent; }}
                         showline=True, linecolor="#D9D4CC",
                     ),
                 )
-                st.plotly_chart(fig_c, use_container_width=True)
+                st.plotly_chart(fig_c, width='stretch')
 
                 st.markdown(
                     f'<div style="display:flex;gap:20px;font-size:12px;color:{C["text_muted"]};'

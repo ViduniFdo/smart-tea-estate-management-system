@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import pandas as pd
 from datetime import date
 from pathlib import Path
-from Frontend.shared import COLORS, login_guard, render_shell, render_footer
-from Frontend.api_client import predict_productivity
+from shared import COLORS, login_guard, render_shell, render_footer
+from api_client import predict_productivity
 
 st.set_page_config(
     page_title="Production Analytics – STEMS",
@@ -223,7 +223,7 @@ with col_cur:
         f"This Month\n{CUR_MONTH} {CUR_YEAR}",
         key="pa_btn_current",
         type="primary" if cur_active else "secondary",
-        use_container_width=True,
+        width='stretch',
     ):
         st.session_state["pa_period"] = "current"
         st.session_state["pa_prediction_done"] = False
@@ -235,7 +235,7 @@ with col_nxt:
         f"Next Month\n{NEXT_MONTH} {NEXT_YEAR}",
         key="pa_btn_next",
         type="primary" if nxt_active else "secondary",
-        use_container_width=True,
+        width='stretch',
     ):
         st.session_state["pa_period"] = "next"
         st.session_state["pa_prediction_done"] = False
@@ -278,7 +278,7 @@ col_l, col_btn, col_r = st.columns([1.2, 0.8, 1.2])
 with col_btn:
     predict_clicked = st.button(
         "Predict Yield ↓", type="primary",
-        use_container_width=True, key="pa_go_btn"
+        width='stretch', key="pa_go_btn"
     )
 
 #Call backend on click
@@ -513,7 +513,7 @@ fig_yield.update_layout(
     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
     hovermode="x unified",
 )
-st.plotly_chart(fig_yield, use_container_width=True, key="chart_yield_unified")
+st.plotly_chart(fig_yield, width='stretch', key="chart_yield_unified")
 
 
 # SECTION 6 — Year-on-Year bar chart  (only after prediction)
@@ -593,7 +593,7 @@ if prediction_done:
         ),
         showlegend=False,
     )
-    st.plotly_chart(fig_bar, use_container_width=True, key="chart_yoy")
+    st.plotly_chart(fig_bar, width='stretch', key="chart_yoy")
 
     # Legend / annotation strip
     st.markdown(f"""

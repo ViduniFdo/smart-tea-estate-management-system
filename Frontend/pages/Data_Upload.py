@@ -4,7 +4,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import streamlit as st
 import pandas as pd
 from pathlib import Path
-from Frontend.shared import COLORS, login_guard, render_shell, render_footer
+from shared import COLORS, login_guard, render_shell, render_footer
 
 st.set_page_config(
     page_title="Data Upload – STEMS",
@@ -243,7 +243,7 @@ if uploaded:
             )
 
             with st.expander(f"Preview : {dest.name} (first 15 rows)"):
-                st.dataframe(df.head(15), use_container_width=True, hide_index=True)
+                st.dataframe(df.head(15), width="stretch", hide_index=True)
 
         except Exception as e:
             st.error(f"Could not process **{file.name}**: {e}")
@@ -290,7 +290,7 @@ if data_files:
             key="del_select",
         )
     with col_btn:
-        if st.button("🗑 Delete selected", type="primary", use_container_width=True, key="del_confirm"):
+        if st.button("🗑 Delete selected", type="primary", width="stretch", key="del_confirm"):
             if to_delete and to_delete != PLACEHOLDER:
                 target = DATA_DIR / to_delete
                 if target.exists():
