@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import hashlib
 from pathlib import Path
+USERS_FILE = Path(__file__).resolve().parent / "users.csv"
 from datetime import datetime
 
 COLORS = {
