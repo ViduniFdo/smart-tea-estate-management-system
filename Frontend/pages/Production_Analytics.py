@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import pandas as pd
 from datetime import date
 from pathlib import Path
-from shared import COLORS, login_guard, render_shell, render_footer
-from api_client import predict_productivity
+from Frontend.shared import COLORS, login_guard, render_shell, render_footer
+from Frontend.api_client import predict_productivity
 
 st.set_page_config(
     page_title="Production Analytics – STEMS",

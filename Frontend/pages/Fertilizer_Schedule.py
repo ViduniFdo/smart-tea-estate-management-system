@@ -6,8 +6,8 @@ import streamlit as st
 import streamlit.components.v1
 import pandas as pd
 
-from shared import COLORS, login_guard, render_shell, render_footer
-from api_client import predict_fertilizer, get_fertilizer_schedule
+from Frontend.shared import COLORS, login_guard, render_shell, render_footer
+from Frontend.api_client import predict_fertilizer, get_fertilizer_schedule
 
 st.set_page_config(
     page_title="Fertilizer Schedule – STEMS",

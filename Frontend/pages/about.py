@@ -1,9 +1,8 @@
-import sys
-import os
+import sys, os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import streamlit as st
-from shared import COLORS, login_guard, render_shell, render_footer
+from Frontend.shared import COLORS, login_guard, render_shell, render_footer
 
 st.set_page_config(
     page_title="About – STEMS",

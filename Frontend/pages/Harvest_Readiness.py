@@ -5,8 +5,8 @@ import streamlit as st
 import streamlit.components.v1
 from datetime import date, datetime, timedelta
 from collections import defaultdict
-from shared import COLORS, login_guard, render_shell, render_footer
-from api_client import predict_stems
+from Frontend.shared import COLORS, login_guard, render_shell, render_footer
+from Frontend.api_client import predict_stems
 
 st.set_page_config(page_title="Harvest Readiness – STEMS", page_icon="🌿",
                    layout="wide", initial_sidebar_state="expanded")
