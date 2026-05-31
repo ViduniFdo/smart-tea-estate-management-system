@@ -139,7 +139,7 @@ NAV_ITEMS = [
     ("🌿 Harvest Readiness", "pages/Harvest_Readiness.py"),
     ("📈 Production Analytics", "pages/Production_Analytics.py"),
     ("🧪 Soil Quality", "pages/Soil_Quality.py"),
-    ("ⓘ  About STEMS", "pages/About.py"),
+    ("ⓘ  About STEMS", "pages/about.py"),
 ]
 
 MARGIN = "32px"
