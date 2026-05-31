@@ -135,7 +135,6 @@ def inject_css():
 
 NAV_ITEMS = [
     ("⊞  Dashboard", "app.py"),
-    ("📤 Data Upload", "pages/Data_Upload.py"),
     ("🌱 Fertilizer Scheduling", "pages/Fertilizer_Schedule.py"),
     ("🌿 Harvest Readiness", "pages/Harvest_Readiness.py"),
     ("📈 Production Analytics", "pages/Production_Analytics.py"),
