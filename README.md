@@ -3,7 +3,6 @@
 STEMS is a machine learning-powered decision support system built for **Vellai Oya Tea Estate** in Hatton, Sri Lanka. It helps estate managers move away from guesswork and traditional practices toward smarter, data-driven decisions covering everything from when to fertilize to when to harvest.
 
 🔗 **Frontend:** https://smart-tea-estate-management-system.streamlit.app
-🔗 **Backend API:** https://minuka-stems-backend.hf.space/docs
 
 ---
 
@@ -107,7 +106,6 @@ The backend API docs are available at [`/docs`](https://minuka-stems-backend.hf.
 | | |
 |---|---|
 | **Frontend** | [smart-tea-estate-management-system.streamlit.app](https://smart-tea-estate-management-system.streamlit.app) |
-| **Backend** | [minuka-stems-backend.hf.space/docs](https://minuka-stems-backend.hf.space/docs) |
 
 ---
 
